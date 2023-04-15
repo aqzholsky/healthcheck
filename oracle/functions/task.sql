@@ -29,7 +29,10 @@ create or replace function GET_ANNUAL_COMP(
 return number is
  annual number;
 begin
-end GET_ANNUAL_COMP;create table jobs as select * from hr.JOBS;
+    
+end GET_ANNUAL_COMP;
+
+create table jobs as select * from hr.JOBS;
 ALTER TABLE jobs ADD CONSTRAINT job_id_pk PRIMARY KEY (job_id);
 
 -- 1
