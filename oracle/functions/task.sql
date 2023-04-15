@@ -14,40 +14,6 @@ exception
 end GET_JOB;
 
 declare
-    job_title varchar(100);
-begin
-    job_title := GET_JOB('SA_REP');
-	if job_title is not null then
-        dbms_output.put_line('Job title: ' || job_title);
-	end if;
-end;
-
--- 2
-create or replace function GET_ANNUAL_COMP(
-    p_salary in number default 0, 
-    p_commission_pct in number default 0)
-return number is
- annual number;
-begin
-    
-end GET_ANNUAL_COMP;
-
-create table jobs as select * from hr.JOBS;
-ALTER TABLE jobs ADD CONSTRAINT job_id_pk PRIMARY KEY (job_id);
-
--- 1
-create or replace function GET_JOB(
-    p_job_id hr.jobs.job_id%type
-) return varchar is p_job_title hr.jobs.job_title%type;
-begin
-    select job_title into p_job_title from jobs where job_id=p_job_id;
-	return p_job_title;
-exception
-    when NO_DATA_FOUND then
-    return null;
-end GET_JOB;
-
-declare
     v_job_title VARCHAR2(100);
 begin
     v_job_title := GET_JOB('SA_REP');
